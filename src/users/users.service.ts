@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { UpdateUserInput } from './dto/update-user.input';
 import { SingUpInput } from '../auth/dto/inputs/signup.input';
+import { ValidRoles } from '../auth/enums/valid-roles.enum';
 
 @Injectable()
 export class UsersService {
@@ -28,8 +29,13 @@ export class UsersService {
     }
   }
 
-  async findAll(): Promise<User[]> {
-    return [];
+  async findAll( roles: ValidRoles[] ): Promise<User[]> {
+    if( roles.length === 0 ) return this.usersRepository.find();
+
+    return this.usersRepository.createQueryBuilder()
+                               .andWhere('ARRAY[roles] && ARRAY[:...roles]')
+                               .setParameter('roles', roles)
+                               .getMany();
   }
 
   async findOneByEmail( email: string ): Promise<User> {
