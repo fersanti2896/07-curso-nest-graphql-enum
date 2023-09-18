@@ -28,9 +28,16 @@ type Query {
     """Identificador del item."""
     id: ID!
   ): Item!
-  users: [User!]!
+  users(roles: [ValidRoles!] = []): [User!]!
   user(id: ID!): User!
   revalidate: AuthResponse!
+}
+
+"""Roles permitidos."""
+enum ValidRoles {
+  superUser
+  admin
+  user
 }
 
 type Mutation {
