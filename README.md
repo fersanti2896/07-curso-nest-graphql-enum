@@ -1,12 +1,15 @@
-# Anylist - Autenticación y Autorización
+# Anylist - Usuarios y Enumeraciones - Admin Roles
 
-Se continua con el `Backend` de Items, ahora con la parte de Autenticación y Autorización, los temas que se ven son: 
+Se continua con el `Backend` de Items, ahora con la creación de usuarios y enumeraciones, los temas que se ven son: 
 
-- Protección de `Queries` y `Mutations`.
-- Creación de usuarios desde `GraphQL`.
-- Autenticación por login.
-- Creación de `JWT`.
-- Revalidación de token de autenticación. 
+- Relaciones `ManyToOne` a la misma tabla.
+- Actualización de usuarios.
+- Bloqueo de usuarios.
+- Protección del `GqlSchema`.
+- Módulo asíncronos.
+- `Factory functions`.
+- Uso de módulos en `factory functions`.
+- Roles y actualización de usuario que modifica registros.
 
 ### Pasos para iniciar API
 
